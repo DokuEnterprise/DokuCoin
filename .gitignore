@@ -2,7 +2,10 @@
 *.exe
 *.dll
 *.so
+*.old
+*.bin
 *.dylib
+*.db
 
 # Test binary, build with `go test -c`
 *.test
