@@ -3,6 +3,7 @@
 
 #include "utility.cpp"
 #include <limits>
+#include <algorithm>
 #include <mutex>
 #include <random>
 #include <unordered_set>
@@ -64,6 +65,7 @@ namespace SimpleWeb {
     };
 
     class Response {
+      // Allow acess to private and protected memebers
       friend class ClientBase<socket_type>;
       friend class Client<socket_type>;
 
@@ -86,10 +88,10 @@ namespace SimpleWeb {
       Config() noexcept {}
 
     public:
-      /// Set timeout on requests in seconds. Default value: 0 (no timeout).
-      long timeout = 0;
-      /// Set connect timeout in seconds. Default value: 0 (Config::timeout is then used instead).
-      long timeout_connect = 0;
+      /// Set timeout on requests in seconds.
+      long timeout = 40;
+      /// Set connect timeout in seconds.
+      long timeout_connect = 40;
       /// Maximum size of response stream buffer. Defaults to architecture maximum.
       /// Reaching this limit will result in a message_size error code.
       std::size_t max_response_streambuf_size = std::numeric_limits<std::size_t>::max();
@@ -113,6 +115,7 @@ namespace SimpleWeb {
 
       std::unique_ptr<asio::steady_timer> timer;
 
+      // Set Up Timeout
       void set_timeout(long seconds = 0) noexcept {
         if(seconds == 0)
           seconds = timeout;
@@ -232,6 +235,15 @@ namespace SimpleWeb {
 
           // Remove unused connections, but keep one open for HTTP persistent connection:
           std::size_t unused_connections = 0;
+          /*for_each(this->connections.begin(), this->connections.end(), [&unused_connections] (auto n){
+            if(ec && connection == n){
+              n = this->connections.erase(n);
+            }else if(n.in_use){
+
+            }
+          });*/
+
+
           for(auto it = this->connections.begin(); it != this->connections.end();) {
             if(ec && connection == *it)
               it = this->connections.erase(it);

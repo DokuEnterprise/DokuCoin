@@ -1,4 +1,3 @@
-// author: tko
 #ifndef COMMON_H
 #define COMMON_H
 
@@ -49,6 +48,7 @@ string getMerkleRoot(const vector<string> &merkle) {
 pair<string,string> findHash(int index, string prevHash, vector<string> &merkle) {
     string header = to_string(index) + prevHash + getMerkleRoot(merkle);
     unsigned int nonce;
+    // Keep brute forcing
     for (nonce = 0; nonce < 100000; nonce++ ) {
         string blockHash = sha256(header + to_string(nonce));
         if (blockHash.substr(0,2) == "00"){
