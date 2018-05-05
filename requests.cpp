@@ -1,4 +1,3 @@
-//author: tko
 #ifndef REQUESTS_H
 #define REQUESTS_H
 
@@ -96,8 +95,4 @@ void addSelfToNetwork(const vector<int> *listOfNodes,int port) {
         }
     }
 }
-
-
-
-
 #endif

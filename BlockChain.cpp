@@ -1,4 +1,3 @@
-//author: tko
 #ifndef BLOCKCHAIN_H
 #define BLOCKCHAIN_H
 
@@ -28,7 +27,7 @@ private:
     vector<unique_ptr<Block> > blockchain; //vector that is the blockchain
 };
 
-// If integer passed into constructor is 0, it the first node and creates the genesis block
+// If integer passed into constructor is 0, it is the first node and creates the genesis block
 BlockChain::BlockChain(int genesis ){
     if (genesis == 0) {
         vector<string> v;
@@ -42,6 +41,7 @@ BlockChain::BlockChain(int genesis ){
 }
 // Gets block based on the index
 Block BlockChain::getBlock(int index) {
+    // Iterate over the whole blockchain bad
     for ( int i = 0; i <blockchain.size(); i++ ){
         if (blockchain[i]->getIndex() == index) {
             return *(blockchain[i]);
@@ -88,7 +88,7 @@ int BlockChain::replaceChain(json chain) {
     while (this->blockchain.size() > 1){
         this->blockchain.pop_back();
     }
-    for (int a = 1; a <chain["length"].get<int>(); a++ ){
+    for (int a = 1; a < chain["length"].get<int>(); a++ ){
         auto block = chain["data"][a];
         vector<string> data = block["data"].get<vector<string> >();
         this->addBlock(block["index"],block["previousHash"],block["hash"],block["nonce"],data);

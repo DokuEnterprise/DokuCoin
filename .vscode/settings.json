@@ -1,0 +1,19 @@
+{
+    "files.associations": {
+        "*.ipp": "cpp",
+        "memory": "cpp",
+        "algorithm": "cpp",
+        "__hash_table": "cpp",
+        "__tree": "cpp",
+        "deque": "cpp",
+        "hash_map": "cpp",
+        "hash_set": "cpp",
+        "list": "cpp",
+        "map": "cpp",
+        "set": "cpp",
+        "string": "cpp",
+        "unordered_map": "cpp",
+        "unordered_set": "cpp",
+        "vector": "cpp"
+    }
+}
