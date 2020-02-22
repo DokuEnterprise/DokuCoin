@@ -21,6 +21,7 @@ public:
     Block();
     void set_hash();
     std::string get_hash();
+    std::string get_data();
 };
 
 

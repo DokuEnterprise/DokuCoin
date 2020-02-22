@@ -6,6 +6,10 @@ void Block::set_hash(){
     hash = sha256(t + data + prev_block_hash);
 }
 
+std::string Block::get_data(){
+    return this->data;
+}
+
 std::string Block::get_hash(){
     return this->hash;
 }
