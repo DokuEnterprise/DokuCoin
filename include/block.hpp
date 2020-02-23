@@ -8,10 +8,13 @@
 #include <openssl/sha.h>
 #include <chrono>
 #include <ctime>
+#include "proof.hpp"
+#include "utils.hpp"
 
 class Block
 {
 private:
+    int nonce;
     int timestamp;
     std::string data;
     std::string hash;
@@ -19,9 +22,11 @@ private:
 public:
     Block(std::string prev_block_hash, std::string data);
     Block();
-    void set_hash();
+    // void set_hash();
     std::string get_hash();
     std::string get_data();
+    std::string get_prev_block_hash();
+    int get_timestamp();
 };
 
 
