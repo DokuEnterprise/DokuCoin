@@ -1,4 +1,8 @@
 #include "block.hpp"
+#include "proof.hpp"
+#include <string.h>
+#include <stdio.h>
+
 
 // void Block::set_hash(){
 //     //TODO: make this better later
@@ -34,7 +38,9 @@ Block::Block(std::string prev_block_hash, std::string data){
     this->timestamp = static_cast<long int>(end_time);
     this->prev_block_hash = prev_block_hash;
     
-    Proof p;
+    auto x = this;
+    Proof p(x);
+
     auto pdata = p.run();
     this->hash = pdata.hash;
     this->nonce = pdata.nonce;

@@ -1,4 +1,6 @@
 #include <saber/blockchain.hpp>
+#include <saber/block.hpp>
+
 
 int main(){
     Blockchain c;
@@ -8,10 +10,8 @@ int main(){
     }
     
     for(auto b : c.blockchain){
-        std::cout << b.get_hash() << std::endl;
-        std::cout << b.get_data() << std::endl;
-  
-    }
+        std::cout << "HASH: " <<  b.get_hash() << std::endl;
+        std::cout << "DATA: " << b.get_data() << std::endl;    }
     return 0;
 }
 

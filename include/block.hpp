@@ -8,7 +8,6 @@
 #include <openssl/sha.h>
 #include <chrono>
 #include <ctime>
-#include "proof.hpp"
 #include "utils.hpp"
 
 class Block

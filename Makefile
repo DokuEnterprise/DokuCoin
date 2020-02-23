@@ -5,7 +5,7 @@ ROOT_DIR:=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 CPPFLAGS= -std=c++17 -I$(ROOT_DIR)/include -fomit-frame-pointer -fPIC -DQHASM
 LDFLAGS= -shared -L/usr/local/lib -lcrypto -lssl -lpthread
 
-SOURCES = $(shell echo *.cpp)
+SOURCES = block.cpp proof.cpp  blockchain.cpp
 HEADERS = $(shell echo include/*.hpp)
 OBJECTS=$(SOURCES:.cpp=.o)
 

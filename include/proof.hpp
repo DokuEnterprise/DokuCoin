@@ -2,7 +2,6 @@
 #define TARGET_BITS 24
 
 #include "block.hpp"
-#include "blockchain.hpp"
 
 struct p_data{
     int nonce;
@@ -17,7 +16,8 @@ class Proof
 private:
     /* data */
 public:
-    Block block;
+    Proof(Block* b);
+    Block* block;
     int target;
     p_data run();
     Proof();
